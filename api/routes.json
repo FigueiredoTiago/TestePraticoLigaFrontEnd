@@ -1,0 +1,8 @@
+{
+    "api/especialidades": "/especialidades",
+    "api/convenios": "/convenios",
+    "api/disponibilidades/definir": "/disponibilidades",
+    "api/disponibilidades": "/disponibilidades",
+    "api/agendamentos": "/agendamentos",
+    "api/atendimentos": "/atendimentos"
+}
