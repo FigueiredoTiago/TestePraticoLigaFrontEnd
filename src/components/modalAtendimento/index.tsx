@@ -6,7 +6,8 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { newAtendimento, type NovoAtendimento } from "../../axios/axios";
+import { newAtendimento, type NovoAtendimento, api } from "../../axios/axios"; // api axios para delete
+import { toast } from "react-toastify";
 
 const style = {
   position: "absolute",
@@ -24,6 +25,11 @@ interface ModalProps {
   agendamentoId: number;
 }
 
+const deletarAgendamento = async (id: number) => {
+  const response = await api.delete(`/agendamentos/${id}`);
+  return response.data;
+};
+
 export default function BasicModal({ agendamentoId }: ModalProps) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -35,16 +41,26 @@ export default function BasicModal({ agendamentoId }: ModalProps) {
   const { register, handleSubmit, reset } = useForm<{ observacoes: string }>();
   const queryClient = useQueryClient();
 
+  // finalizar atendimento e apagar agendamento
   const mutation = useMutation({
-    mutationFn: (dados: NovoAtendimento) => newAtendimento(dados),
+    mutationFn: async (dados: NovoAtendimento) => {
+      await newAtendimento(dados); // cria atendimento
+      await deletarAgendamento(dados.agendamentoId); // deleta agendamento
+    },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["atendimentos"] });
+      // Remove o agendamento da lista localmente para atualização em tempo real
+      toast.success("Esse atendimento Foi Finalizado.");
+
+      queryClient.invalidateQueries({ queryKey: ["agendamentos"] });
       handleClose();
+    },
+    onError: () => {
+      alert("Erro ao finalizar atendimento.");
     },
   });
 
   const onSubmit = (data: { observacoes: string }) => {
-    const now = new Date().toISOString(); // Data atual em formato ISO
+    const now = new Date().toISOString();
     mutation.mutate({
       agendamentoId,
       observacoes: data.observacoes,

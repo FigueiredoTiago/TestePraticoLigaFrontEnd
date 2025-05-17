@@ -86,6 +86,12 @@ const agendarConsulta = async (dados: NovoAgendamento) => {
   return response.data;
 };
 
+//deletar consulta
+const deletarAgendamento = async (id: number) => {
+  const response = await api.delete(`/agendamentos/${id}`);
+  return response.data;
+};
+
 const getAtendimentos = async () => {
   try {
     const response = await api.get<Atendimento[]>("/atendimentos");
@@ -109,4 +115,5 @@ export {
   agendarConsulta,
   getAtendimentos,
   newAtendimento,
+  deletarAgendamento
 };
