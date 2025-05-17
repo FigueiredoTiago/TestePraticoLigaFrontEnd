@@ -39,7 +39,7 @@
   padding: 1rem;
   height: 22rem;
   min-width: unset;
-  width: 100%;
+  max-width: 45rem;
   border: 2px solid rgb(170, 170, 170);
   border-radius: 2rem;
   display: flex;

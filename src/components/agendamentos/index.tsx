@@ -2,7 +2,43 @@ import styles from "./styles.module.css";
 import dayIcon from "../../assets/icons/day.svg";
 import tardeIcon from "../../assets/icons/tarde.svg";
 import noiteIcon from "../../assets/icons/noite.svg";
-const index = () => {
+
+import { useQuery } from "@tanstack/react-query";
+import { type Agendamento, getAgendamentos } from "../../axios/axios";
+
+//data e hora formatada
+const formatarDataHora = (iso: string) => {
+  const data = new Date(iso);
+  const dia = data.toLocaleDateString("pt-BR");
+  const hora = data.toLocaleTimeString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  return { dia, hora };
+};
+
+//periodo do dia
+const getPeriodoInfo = (iso: string) => {
+  const hora = new Date(iso).getHours();
+
+  if (hora >= 6 && hora < 12) {
+    return { label: "Manhã", icon: dayIcon };
+  } else if (hora >= 12 && hora < 18) {
+    return { label: "Tarde", icon: tardeIcon };
+  } else {
+    return { label: "Noite", icon: noiteIcon };
+  }
+};
+
+const Index = () => {
+  const { data, isLoading, isError } = useQuery<Agendamento[]>({
+    queryKey: ["agendamentos"],
+    queryFn: getAgendamentos,
+  });
+
+  if (isLoading) return <p>Carregando...</p>;
+  if (isError) return <p>Erro ao carregar os agendamentos.</p>;
+
   return (
     <section className={styles.agendamentosContent}>
       <section className={styles.container}>
@@ -12,82 +48,41 @@ const index = () => {
         </div>
 
         <div className={styles.agendamentos}>
-          <div className={styles.agendamentoItem}>
-            <h3 className={styles.day}>
-              Manha <img src={dayIcon} alt="icone dia" />
-            </h3>
+          {data?.map((agendamento) => {
+            const { dia, hora } = formatarDataHora(agendamento.dataHora);
+            const { label, icon } = getPeriodoInfo(agendamento.dataHora);
 
-            <div className={styles.infoContent}>
-              <p className={styles.infoItem}>
-                Paciente: <span>Tiago Figueiredo</span>
-              </p>
-              <p className={styles.infoItem}>
-                Medico: <span>Dr. Silva Moraes</span>
-              </p>
-              <p className={styles.infoItem}>
-                Especialidade: <span>Angiovascular</span>
-              </p>
+            return (
+              <div key={agendamento.id} className={styles.agendamentoItem}>
+                <h3 className={styles.day}>
+                  {label}{" "}
+                  <img src={icon} alt={`ícone ${label.toLowerCase()}`} />
+                </h3>
 
-              <p className={styles.infoItem}>
-                Dia: <span>17/05/2025</span>
-              </p>
-              <p className={styles.infoItem}>
-                Hora: <span>9:00</span>
-              </p>
-            </div>
-          </div>
-          <div className={styles.agendamentoItem}>
-            <h3 className={styles.day}>
-              Tarde <img src={tardeIcon} alt="icone tarde" />
-            </h3>
-
-            <div className={styles.infoContent}>
-              <p className={styles.infoItem}>
-                Paciente: <span>Tiago Figueiredo</span>
-              </p>
-              <p className={styles.infoItem}>
-                Medico: <span>Dr. Silva Moraes</span>
-              </p>
-              <p className={styles.infoItem}>
-                Especialidade: <span>Angiovascular</span>
-              </p>
-
-              <p className={styles.infoItem}>
-                Dia: <span>17/05/2025</span>
-              </p>
-              <p className={styles.infoItem}>
-                Hora: <span>9:00</span>
-              </p>
-            </div>
-          </div>
-          <div className={styles.agendamentoItem}>
-            <h3 className={styles.day}>
-              Noite <img src={noiteIcon} alt="icone noite" />
-            </h3>
-
-            <div className={styles.infoContent}>
-              <p className={styles.infoItem}>
-                Paciente: <span>Tiago Figueiredo</span>
-              </p>
-              <p className={styles.infoItem}>
-                Medico: <span>Dr. Silva Moraes</span>
-              </p>
-              <p className={styles.infoItem}>
-                Especialidade: <span>Angiovascular</span>
-              </p>
-
-              <p className={styles.infoItem}>
-                Dia: <span>17/05/2025</span>
-              </p>
-              <p className={styles.infoItem}>
-                Hora: <span>9:00</span>
-              </p>
-            </div>
-          </div>
+                <div className={styles.infoContent}>
+                  <p className={styles.infoItem}>
+                    Paciente: <span>{agendamento.paciente}</span>
+                  </p>
+                  <p className={styles.infoItem}>
+                    Médico: <span>{agendamento.medico}</span>
+                  </p>
+                  <p className={styles.infoItem}>
+                    Especialidade: <span>{agendamento.especialidadeNome}</span>
+                  </p>
+                  <p className={styles.infoItem}>
+                    Dia: <span>{dia}</span>
+                  </p>
+                  <p className={styles.infoItem}>
+                    Hora: <span>{hora}</span>
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
     </section>
   );
 };
 
-export default index;
+export default Index;
