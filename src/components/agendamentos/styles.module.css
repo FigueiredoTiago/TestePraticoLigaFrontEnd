@@ -12,6 +12,7 @@
   align-items: center;
 
   .title {
+    text-transform: uppercase;
     padding: 5rem 0rem;
     color: #fff;
     width: 100%;
@@ -38,7 +39,7 @@
   color: #fff;
   font-weight: 600;
   padding: 1rem;
-  height: 22rem;
+  height: 25rem;
   min-width: unset;
   max-width: 45rem;
   border-radius: 2rem;

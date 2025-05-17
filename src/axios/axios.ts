@@ -35,10 +35,10 @@ export interface HorarioDisponibilidade {
 
 export interface NovoAgendamento {
   paciente: string;
-  especialidadeId: number;
-  especialidadeNome: string;
-  convenioId: number;
-  convenioNome: string;
+  especialidadeId?: number;
+  especialidadeNome?: string;
+  convenioId?: number;
+  convenioNome?: string;
   dataHora: string;
   medico?: string;
 }

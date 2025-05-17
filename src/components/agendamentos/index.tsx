@@ -70,6 +70,9 @@ const Index = () => {
                     Especialidade: <span>{agendamento.especialidadeNome}</span>
                   </p>
                   <p className={styles.infoItem}>
+                    Convenio: <span>{agendamento.convenioNome}</span>
+                  </p>
+                  <p className={styles.infoItem}>
                     Dia: <span>{dia}</span>
                   </p>
                   <p className={styles.infoItem}>

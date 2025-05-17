@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   getEspecialidades,
@@ -7,14 +6,9 @@ import {
 } from "../../axios/axios";
 
 import styles from "./styles.module.css";
+import { useForm } from "react-hook-form";
 
 const Index = () => {
-  const [especialidadeId, setEspecialidadeId] = useState<number | "">("");
-  const [convenioId, setConvenioId] = useState<number | "">("");
-  const [dataSelecionada, setDataSelecionada] = useState("");
-  const [horarioSelecionado, setHorarioSelecionado] = useState("");
-  const [medico, setMedico] = useState("");
-  const [paciente, setPaciente] = useState("");
   const queryClient = useQueryClient();
 
   const { data: especialidades } = useQuery({
@@ -31,12 +25,6 @@ const Index = () => {
     mutationFn: agendarConsulta,
     onSuccess: () => {
       alert("Consulta agendada com sucesso!");
-      setEspecialidadeId("");
-      setConvenioId("");
-      setDataSelecionada("");
-      setHorarioSelecionado("");
-      setMedico("");
-      setPaciente("");
       queryClient.invalidateQueries({ queryKey: ["agendamentos"] });
     },
     onError: () => {
@@ -44,46 +32,35 @@ const Index = () => {
     },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  type FormValues = {
+    especialidadeNome: string;
+    convenioNome: string;
+    dataSelecionada: string;
+    horarioSelecionado: string;
+    medico?: string;
+    paciente: string;
+  };
 
-    const especialidadeNumId = Number(especialidadeId);
-    const convenioNumId = Number(convenioId);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
 
-    if (
-      !especialidadeId ||
-      !convenioId ||
-      !dataSelecionada ||
-      !horarioSelecionado ||
-      !paciente
-    ) {
-      alert("Preencha todos os campos obrigatórios");
-      return;
-    }
+  const onSubmit = (data: FormValues) => {
+    console.log(data);
 
-    const especialidadeSelecionada = especialidades?.find(
-      (esp) => esp.id === especialidadeNumId
-    );
-    const convenioSelecionado = convenios?.find(
-      (conv) => conv.id === convenioNumId
-    );
+    const dataHora = `${data.dataSelecionada}T${data.horarioSelecionado}:00Z`;
 
-    if (!especialidadeSelecionada || !convenioSelecionado) {
-      alert("Especialidade ou Convênio inválido.");
-      return;
-    }
-
-    const dataHora = `${dataSelecionada}T${horarioSelecionado}:00Z`;
-
-    mutate({
-      paciente,
-      especialidadeId: especialidadeNumId,
-      especialidadeNome: especialidadeSelecionada.nome,
-      convenioId: convenioNumId,
-      convenioNome: convenioSelecionado.nome,
+    const values = {
+      convenioNome: data.convenioNome,
+      especialidadeNome: data.especialidadeNome,
+      medico: data.medico,
+      paciente: data.paciente,
       dataHora,
-      medico,
-    });
+    };
+
+    mutate(values);
   };
 
   return (
@@ -93,41 +70,33 @@ const Index = () => {
         <p>Preencha os dados abaixo para criar um novo agendamento.</p>
       </div>
 
-      <form className={styles.formContent} onSubmit={handleSubmit}>
+      <form className={styles.formContent} onSubmit={handleSubmit(onSubmit)}>
         {/* Especialidade */}
         <label>
           Especialidade:
-          <select
-            value={especialidadeId}
-            onChange={(e) =>
-              setEspecialidadeId(e.target.value ? Number(e.target.value) : "")
-            }
-          >
+          <select {...register("especialidadeNome", { required: true })}>
             <option value="">Selecione</option>
             {especialidades?.map((esp) => (
-              <option key={esp.id} value={esp.id}>
+              <option key={esp.id} value={esp.nome}>
                 {esp.nome}
               </option>
             ))}
           </select>
+          {errors.especialidadeNome && <span>Campo obrigatório</span>}
         </label>
 
         {/* Convênio */}
         <label>
           Convênio:
-          <select
-            value={convenioId}
-            onChange={(e) =>
-              setConvenioId(e.target.value ? Number(e.target.value) : "")
-            }
-          >
+          <select {...register("convenioNome", { required: true })}>
             <option value="">Selecione</option>
             {convenios?.map((conv) => (
-              <option key={conv.id} value={conv.id}>
+              <option key={conv.id} value={conv.nome}>
                 {conv.nome}
               </option>
             ))}
           </select>
+          {errors.convenioNome && <span>Campo obrigatório</span>}
         </label>
 
         {/* Data */}
@@ -135,9 +104,9 @@ const Index = () => {
           Data:
           <input
             type="date"
-            value={dataSelecionada}
-            onChange={(e) => setDataSelecionada(e.target.value)}
+            {...register("dataSelecionada", { required: true })}
           />
+          {errors.dataSelecionada && <span>Campo obrigatório</span>}
         </label>
 
         {/* Hora */}
@@ -145,9 +114,9 @@ const Index = () => {
           Hora:
           <input
             type="time"
-            value={horarioSelecionado}
-            onChange={(e) => setHorarioSelecionado(e.target.value)}
+            {...register("horarioSelecionado", { required: true })}
           />
+          {errors.horarioSelecionado && <span>Campo obrigatório</span>}
         </label>
 
         {/* Médico (opcional) */}
@@ -155,8 +124,7 @@ const Index = () => {
           Médico (opcional):
           <input
             type="text"
-            value={medico}
-            onChange={(e) => setMedico(e.target.value)}
+            {...register("medico")}
             placeholder="Nome do médico"
           />
         </label>
@@ -166,10 +134,10 @@ const Index = () => {
           Nome do paciente:
           <input
             type="text"
-            value={paciente}
-            onChange={(e) => setPaciente(e.target.value)}
+            {...register("paciente", { required: true })}
             placeholder="Digite o nome"
           />
+          {errors.paciente && <span>Campo obrigatório</span>}
         </label>
 
         {/* Botão Agendar */}
