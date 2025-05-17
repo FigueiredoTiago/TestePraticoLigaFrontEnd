@@ -4,6 +4,7 @@ import {
   getConvenios,
   agendarConsulta,
 } from "../../axios/axios";
+import logoLiga from '../../assets/logo_cor.png';
 
 import styles from "./styles.module.css";
 import { useForm } from "react-hook-form";
@@ -66,6 +67,7 @@ const Index = () => {
   return (
     <div className={styles.sideBar}>
       <div className={styles.title}>
+        <img src={logoLiga} alt="Logo LigaRN" />
         <h2>Agendar um Atendimento</h2>
         <p>Preencha os dados abaixo para criar um novo agendamento.</p>
       </div>
