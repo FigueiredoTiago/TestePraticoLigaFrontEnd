@@ -48,6 +48,14 @@
   background-image: linear-gradient(90deg, #d8594d, #dc664d);
 }
 
+.agendaTitle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px inset #fff;
+}
+
 .agendamentoItem {
   color: #fff;
   font-weight: 600;
@@ -70,8 +78,6 @@
     justify-content: center;
     gap: 0.5rem;
     font-weight: 400;
-    border-bottom: 0.5px inset #fff;
-    width: 100%;
   }
 
   .infoContent {

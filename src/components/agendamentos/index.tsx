@@ -3,6 +3,7 @@ import dayIcon from "../../assets/icons/day.svg";
 import tardeIcon from "../../assets/icons/tarde.svg";
 import noiteIcon from "../../assets/icons/noite.svg";
 import Finalizados from "../../components/finalizados/index";
+import ModalAtendimento from "../modalAtendimento/index";
 
 import { useQuery } from "@tanstack/react-query";
 import { type Agendamento, getAgendamentos } from "../../axios/axios";
@@ -55,10 +56,13 @@ const Index = () => {
 
             return (
               <div key={agendamento.id} className={styles.agendamentoItem}>
-                <h3 className={styles.day}>
-                  {label}{" "}
-                  <img src={icon} alt={`ícone ${label.toLowerCase()}`} />
-                </h3>
+                <div className={styles.agendaTitle}>
+                  <h3 className={styles.day}>
+                    {label}{" "}
+                    <img src={icon} alt={`ícone ${label.toLowerCase()}`} />
+                  </h3>
+                  <ModalAtendimento agendamentoId={agendamento.id} />
+                </div>
 
                 <div className={styles.infoContent}>
                   <p className={styles.infoItem}>
@@ -83,13 +87,9 @@ const Index = () => {
               </div>
             );
           })}
-
-          
         </div>
-        
+
         <Finalizados />
-
-
       </section>
     </section>
   );

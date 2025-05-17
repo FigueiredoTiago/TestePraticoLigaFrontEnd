@@ -50,6 +50,12 @@ export type Atendimento = {
   observacoes: string;
 };
 
+export interface NovoAtendimento {
+  agendamentoId: number;
+  dataAtendimento: string;
+  observacoes?: string;
+}
+
 //exibe os agendamentos
 const getAgendamentos = async (): Promise<Agendamento[]> => {
   const response = await api.get("http://localhost:3000/agendamentos");
@@ -90,11 +96,17 @@ const getAtendimentos = async () => {
   }
 };
 
+const newAtendimento = async (dados: NovoAtendimento) => {
+  const response = await api.post("/atendimentos", dados);
+  return response.data;
+};
+
 export {
   getAgendamentos,
   getConvenios,
   getEspecialidades,
   getHorariosDisponiveis,
   agendarConsulta,
-  getAtendimentos
+  getAtendimentos,
+  newAtendimento,
 };
