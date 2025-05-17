@@ -3,8 +3,9 @@
   width: 35rem;
   padding: 1rem;
   border-radius: 1rem;
-  background-color: #d95851;
+  background-color: #232225;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.479);
+  color: #fff;
 }
 
 .title {
@@ -20,4 +21,55 @@
     font-size: 1.4rem;
     font-weight: 200;
   }
+}
+
+.sideBar {
+  padding: 2rem;
+  width: 350px;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+}
+
+.formContent label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.horariosContainer {
+  margin-top: 1rem;
+}
+
+.horariosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.submitBtn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1.5rem .5rem;
+  background-color: #DC664D;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submitBtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

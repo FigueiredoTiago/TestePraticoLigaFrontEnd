@@ -44,7 +44,7 @@ const Index = () => {
       <section className={styles.container}>
         <div className={styles.title}>
           <h2>Agendados</h2>
-          <p>Consulte Todos os Pacientes de Hoje</p>
+          <p>Consulte Todos os Pacientes de Agendados</p>
         </div>
 
         <div className={styles.agendamentos}>

@@ -1,53 +1,75 @@
 {
-    "especialidades": [
-        {
-            "id": 1,
-            "nome": "Cardiologia"
-        },
-        {
-            "id": 2,
-            "nome": "Dermatologia"
-        }
-    ],
-    "convenios": [
-        {
-            "id": 1,
-            "nome": "Unimed"
-        },
-        {
-            "id": 2,
-            "nome": "SulAmérica"
-        }
-    ],
-    "disponibilidades": [
-        {
-            "id": 1,
-            "medico": "Dr. João",
-            "especialidadeId": 1,
-            "diaSemana": "Segunda-feira",
-            "horaInicio": "08:00",
-            "horaFim": "12:00",
-            "duracaoConsultaMinutos": 30
-        }
-    ],
-    "agendamentos": [
-        {
-            "id": 1,
-            "paciente": "Ana Silva",
-            "especialidadeId": 1,
-            "especialidadeNome": "Cardiologia",
-            "convenioId": 1,
-            "convenioNome": "Unimed",
-            "dataHora": "2025-05-12T09:00:00Z",
-            "medico": "Dr. João"
-        }
-    ],
-    "atendimentos": [
-        {
-            "id": 1,
-            "agendamentoId": 1,
-            "dataAtendimento": "2025-05-12T09:00:00Z",
-            "observacoes": "Paciente atendido com queixas leves"
-        }
-    ]
+  "especialidades": [
+    {
+      "id": "1",
+      "nome": "Cardiologia"
+    },
+    {
+      "id": "2",
+      "nome": "Dermatologia"
+    }
+  ],
+  "convenios": [
+    {
+      "id": "1",
+      "nome": "Unimed"
+    },
+    {
+      "id": "2",
+      "nome": "SulAmérica"
+    }
+  ],
+  "disponibilidades": [
+    {
+      "id": "1",
+      "medico": "Dr. João",
+      "especialidadeId": 1,
+      "diaSemana": "Segunda-feira",
+      "horaInicio": "08:00",
+      "horaFim": "12:00",
+      "duracaoConsultaMinutos": 30
+    },
+    {
+      "id": "d68c",
+      "especialidadeId": 1,
+      "data": "2025-05-08",
+      "medico": "saddasdas"
+    },
+    {
+      "id": "084f"
+    },
+    {
+      "id": "d00b"
+    }
+  ],
+  "agendamentos": [
+    {
+      "id": "1",
+      "paciente": "Ana Silva",
+      "especialidadeId": 1,
+      "especialidadeNome": "Cardiologia",
+      "convenioId": 1,
+      "convenioNome": "Unimed",
+      "dataHora": "2025-05-12T09:00:00Z",
+      "medico": "Dr. João"
+    },
+    {
+      "id": "2",
+      "paciente": "Tiago Figueiredo",
+      "especialidadeId": 1,
+      "especialidadeNome": "Cardiologia",
+      "convenioId": 1,
+      "convenioNome": "SulAmérica",
+      "dataHora": "2025-05-12T18:00:00Z",
+      "medico": "Dr. João"
+    }
+  ],
+  "atendimentos": [
+    {
+      "id": "1",
+      "agendamentoId": 1,
+      "dataAtendimento": "2025-05-12T09:00:00Z",
+      "observacoes": "Paciente atendido com queixas leves"
+    }
+  ]
 }
