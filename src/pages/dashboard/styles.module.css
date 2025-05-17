@@ -1,3 +1,7 @@
 .dashboard {
-    background-color: #fdfdfd;
+    min-height: 100dvh;
+    display: flex;
+    padding: 0rem 1rem;
+    align-items: center;
+    
 }

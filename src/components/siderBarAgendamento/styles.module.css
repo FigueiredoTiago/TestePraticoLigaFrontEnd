@@ -1,0 +1,23 @@
+.sideBar {
+  height: 98dvh;
+  width: 35rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #d95851;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.479);
+}
+
+.title {
+  color: #fdfdfd;
+  font-family: "Roboto", sans-serif;
+
+  h2 {
+    font-size: 2.4rem;
+    font-weight: 400;
+  }
+
+  p {
+    font-size: 1.4rem;
+    font-weight: 200;
+  }
+}

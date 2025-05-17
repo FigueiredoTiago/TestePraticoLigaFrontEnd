@@ -1,15 +1,12 @@
 import styles from "./styles.module.css";
-import SideBarAgendamento from '../../components/siderBarAgendamento/index';
-
+import SideBarAgendamento from "../../components/siderBarAgendamento/index";
+import Agendamentos from "../../components/agendamentos/index";
 const Dashboard = () => {
   return (
-
     <section className={styles.dashboard}>
-
-      <SideBarAgendamento/>
-
+      <SideBarAgendamento />
+      <Agendamentos />
     </section>
-
   );
 };
 
