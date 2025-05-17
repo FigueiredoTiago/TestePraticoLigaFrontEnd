@@ -6,6 +6,7 @@ const Dashboard = () => {
     <section className={styles.dashboard}>
       <SideBarAgendamento />
       <Agendamentos />
+      
     </section>
   );
 };

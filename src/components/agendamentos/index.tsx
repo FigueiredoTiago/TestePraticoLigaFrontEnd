@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import dayIcon from "../../assets/icons/day.svg";
 import tardeIcon from "../../assets/icons/tarde.svg";
 import noiteIcon from "../../assets/icons/noite.svg";
+import Finalizados from "../../components/finalizados/index";
 
 import { useQuery } from "@tanstack/react-query";
 import { type Agendamento, getAgendamentos } from "../../axios/axios";
@@ -82,7 +83,13 @@ const Index = () => {
               </div>
             );
           })}
+
+          
         </div>
+        
+        <Finalizados />
+
+
       </section>
     </section>
   );

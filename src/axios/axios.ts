@@ -43,6 +43,13 @@ export interface NovoAgendamento {
   medico?: string;
 }
 
+export type Atendimento = {
+  id: string;
+  agendamentoId: number;
+  dataAtendimento: string; // ou Date, se for convertido
+  observacoes: string;
+};
+
 //exibe os agendamentos
 const getAgendamentos = async (): Promise<Agendamento[]> => {
   const response = await api.get("http://localhost:3000/agendamentos");
@@ -73,10 +80,21 @@ const agendarConsulta = async (dados: NovoAgendamento) => {
   return response.data;
 };
 
+const getAtendimentos = async () => {
+  try {
+    const response = await api.get<Atendimento[]>("/atendimentos");
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao buscar atendimentos:", error);
+    throw error;
+  }
+};
+
 export {
   getAgendamentos,
   getConvenios,
   getEspecialidades,
   getHorariosDisponiveis,
   agendarConsulta,
+  getAtendimentos
 };

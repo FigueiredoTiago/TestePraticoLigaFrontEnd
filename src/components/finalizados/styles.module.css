@@ -1,0 +1,47 @@
+.sectionFinalizados {
+  background-color: #ffffff71;
+  width: 100%;
+  height: 35rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(10px);
+  overflow-y: scroll;
+}
+
+.sectionFinalizados h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.sectionFinalizados ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cardAtendimento {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.cardAtendimento:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cardAtendimento p {
+  margin: 0.25rem 0;
+  color: #555;
+}
+
+.cardAtendimento strong {
+  color: #222;
+}
