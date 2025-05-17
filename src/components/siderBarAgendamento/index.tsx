@@ -4,7 +4,8 @@ import {
   getConvenios,
   agendarConsulta,
 } from "../../axios/axios";
-import logoLiga from '../../assets/logo_cor.png';
+import { toast } from "react-toastify";
+import logoLiga from "../../assets/logo_cor.png";
 
 import styles from "./styles.module.css";
 import { useForm } from "react-hook-form";
@@ -25,11 +26,11 @@ const Index = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: agendarConsulta,
     onSuccess: () => {
-      alert("Consulta agendada com sucesso!");
+      toast.success("Consulta agendada com sucesso!");
       queryClient.invalidateQueries({ queryKey: ["agendamentos"] });
     },
     onError: () => {
-      alert("Erro ao agendar consulta. Tente novamente.");
+      toast.error("Erro ao agendar consulta. Tente novamente.");
     },
   });
 
@@ -84,7 +85,9 @@ const Index = () => {
               </option>
             ))}
           </select>
-          {errors.especialidadeNome && <span className={styles.errorMessage}>Campo obrigatório</span>}
+          {errors.especialidadeNome && (
+            <span className={styles.errorMessage}>Campo obrigatório</span>
+          )}
         </label>
 
         {/* Convênio */}
@@ -98,7 +101,9 @@ const Index = () => {
               </option>
             ))}
           </select>
-          {errors.convenioNome && <span className={styles.errorMessage}>Campo obrigatório</span>}
+          {errors.convenioNome && (
+            <span className={styles.errorMessage}>Campo obrigatório</span>
+          )}
         </label>
 
         {/* Data */}
@@ -108,7 +113,9 @@ const Index = () => {
             type="date"
             {...register("dataSelecionada", { required: true })}
           />
-          {errors.dataSelecionada && <span className={styles.errorMessage}>Campo obrigatório</span>}
+          {errors.dataSelecionada && (
+            <span className={styles.errorMessage}>Campo obrigatório</span>
+          )}
         </label>
 
         {/* Hora */}
@@ -118,7 +125,9 @@ const Index = () => {
             type="time"
             {...register("horarioSelecionado", { required: true })}
           />
-          {errors.horarioSelecionado && <span className={styles.errorMessage}>Campo obrigatório</span>}
+          {errors.horarioSelecionado && (
+            <span className={styles.errorMessage}>Campo obrigatório</span>
+          )}
         </label>
 
         {/* Médico (opcional) */}
@@ -139,7 +148,9 @@ const Index = () => {
             {...register("paciente", { required: true })}
             placeholder="Digite o nome"
           />
-          {errors.paciente && <span className={styles.errorMessage}>Campo obrigatório</span>}
+          {errors.paciente && (
+            <span className={styles.errorMessage}>Campo obrigatório</span>
+          )}
         </label>
 
         {/* Botão Agendar */}
