@@ -84,7 +84,7 @@ const Index = () => {
               </option>
             ))}
           </select>
-          {errors.especialidadeNome && <span>Campo obrigatório</span>}
+          {errors.especialidadeNome && <span className={styles.errorMessage}>Campo obrigatório</span>}
         </label>
 
         {/* Convênio */}
@@ -98,7 +98,7 @@ const Index = () => {
               </option>
             ))}
           </select>
-          {errors.convenioNome && <span>Campo obrigatório</span>}
+          {errors.convenioNome && <span className={styles.errorMessage}>Campo obrigatório</span>}
         </label>
 
         {/* Data */}
@@ -108,7 +108,7 @@ const Index = () => {
             type="date"
             {...register("dataSelecionada", { required: true })}
           />
-          {errors.dataSelecionada && <span>Campo obrigatório</span>}
+          {errors.dataSelecionada && <span className={styles.errorMessage}>Campo obrigatório</span>}
         </label>
 
         {/* Hora */}
@@ -118,7 +118,7 @@ const Index = () => {
             type="time"
             {...register("horarioSelecionado", { required: true })}
           />
-          {errors.horarioSelecionado && <span>Campo obrigatório</span>}
+          {errors.horarioSelecionado && <span className={styles.errorMessage}>Campo obrigatório</span>}
         </label>
 
         {/* Médico (opcional) */}
@@ -139,7 +139,7 @@ const Index = () => {
             {...register("paciente", { required: true })}
             placeholder="Digite o nome"
           />
-          {errors.paciente && <span>Campo obrigatório</span>}
+          {errors.paciente && <span className={styles.errorMessage}>Campo obrigatório</span>}
         </label>
 
         {/* Botão Agendar */}

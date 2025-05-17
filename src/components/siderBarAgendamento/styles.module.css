@@ -45,7 +45,7 @@
 
 .formContent label {
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 input,
@@ -83,4 +83,8 @@ select {
 .submitBtn:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+.errorMessage {
+  color: #DC664D;
 }
