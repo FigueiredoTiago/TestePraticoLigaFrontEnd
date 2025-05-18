@@ -1,54 +1,96 @@
-# React + TypeScript + Vite
+# 🩺 Sistema de Agendamento Médico
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema de agendamento médico desenvolvido com **React + TypeScript**, utilizando:
 
-Currently, two official plugins are available:
+- `React Hook Form` para manipulação de formulários
+- `TanStack Query` para gerenciamento de dados assíncronos
+- `JSON Server` como API fake
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A aplicação permite aos usuários:
 
-## Expanding the ESLint configuration
+- Selecionar especialidades, convênios, médicos e horários disponíveis
+- Agendar consultas de forma simples e eficiente
+- Visualizar os **últimos atendimentos realizados**
+- Filtrar os atendimentos finalizados por **data**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🧪 Tecnologias Utilizadas
+
+- ⚛️ **React**
+- ⛓️ **TypeScript**
+- 💅 **CSS Modules**
+- 🔄 **React TanStack Query**
+- 📝 **React Hook Form**
+- 🧩 **Material UI** (em alguns componentes)
+- 🗃️ **JSON Server** (API fake para simulação)
+
+---
+
+## 🚀 Instalação e Uso
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/FigueiredoTiago/TestePraticoLigaFrontEnd.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Instale as dependências
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+### 3. Inicie a aplicação React
+
+```bash
+npm run dev
+```
+
+### 4. Inicie o JSON Server (API fake)
+
+```bash
+npm run serve
+```
+
+---
+
+## 🗂️ Estrutura da Fake API
+
+A API fake expõe as seguintes rotas:
+
+```json
+"api/especialidades": "/especialidades",
+"api/convenios": "/convenios",
+"api/disponibilidades/definir": "/disponibilidades",
+"api/disponibilidades": "/disponibilidades",
+"api/agendamentos": "/agendamentos",
+"api/atendimentos": "/atendimentos"
+```
+
+> Edite os dados diretamente no arquivo `db.json` na raiz do projeto.
+
+---
+
+## 🧭 Organização do Projeto
+
+```bash
+/api
+/src
+├── axios/
+│   └── Contém todas as funções de fetch utilizadas na aplicação e seus respectivos types.
+├── components/
+│   ├── Agendamento/              # Renderiza todos os agendamentos e chama o modal de atendimento
+│   ├── Finalizados/             # Mostra todos os atendimentos finalizados
+│   ├── ModalAtendimento/        # Modal para finalizar um agendamento
+│   ├── ModalFiltrarPorData/     # Modal de busca para filtrar atendimentos por data
+│   └── SideBarAgendamento/      # Barra lateral para criação de novos agendamentos
+├── pages/
+│   └── Dashboard/               # Exibe o SideBar e os componentes de agendamento
+```
+
+---
+
+## 👨‍💻 Desenvolvedor
+
+**Tiago Figueiredo**  
