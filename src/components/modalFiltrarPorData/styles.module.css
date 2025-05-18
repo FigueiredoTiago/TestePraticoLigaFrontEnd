@@ -13,3 +13,20 @@
         text-decoration: underline;
     }
 }
+
+
+.modalBox {
+    border-radius: 1rem;
+    width: 50rem;
+    height: 60rem;
+    padding: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    background-color: rgb(255, 255, 255);
+    overflow-y: scroll;
+}

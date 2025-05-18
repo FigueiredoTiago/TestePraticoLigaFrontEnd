@@ -117,33 +117,32 @@ const newAtendimento = async (dados: NovoAtendimento) => {
 };
 
 const filtrarAtendimentos = async (filtros: {
-  dataInicio?: string; // formato esperado: '2025-05-01'
-  dataFim?: string; // formato esperado: '2025-05-31'
+  dataInicio?: string; // formato: '2025-05-18' (usado como data exata)
   paciente?: string;
 }): Promise<Atendimento[]> => {
   const params = new URLSearchParams();
 
-  const formatISO = (data: string, hora: string) => {
-    const isoString = new Date(`${data}T${hora}.000Z`).toISOString();
-    return isoString;
-  };
-
-  if (filtros.dataInicio) {
-    const inicioISO = formatISO(filtros.dataInicio, "00:00:00");
-    params.append("dataAtendimento_gte", inicioISO);
-  }
-
-  if (filtros.dataFim) {
-    const fimISO = formatISO(filtros.dataFim, "23:59:59");
-    params.append("dataAtendimento_lte", fimISO);
-  }
-
+  // Filtro por nome (paciente_like) no backend
   if (filtros.paciente) {
-    params.append("paciente_like", filtros.paciente);
+    params.append("paciente", filtros.paciente);
   }
 
-  const response = await axios.get<Atendimento[]>("/atendimentos", { params });
-  return response.data;
+  const response = await api.get<Atendimento[]>("/atendimentos", { params });
+
+  const atendimentosFiltrados = response.data.filter((atendimento) => {
+    if (!filtros.dataInicio) {
+      return true;
+    }
+
+    const dataAtendimento = new Date(atendimento.dataAtendimento)
+      .toISOString()
+      .slice(0, 10);
+
+    return dataAtendimento === filtros.dataInicio;
+  });
+
+  console.log(atendimentosFiltrados);
+  return atendimentosFiltrados;
 };
 
 export {

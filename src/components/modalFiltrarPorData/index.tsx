@@ -14,8 +14,7 @@ import dayjs, { Dayjs } from "dayjs";
 import styles from "./styles.module.css";
 
 type FiltrosAtendimento = {
-  dataInicio: Dayjs | null;
-  dataFim: Dayjs | null;
+  data: Dayjs | null;
   paciente: string;
 };
 
@@ -25,6 +24,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 700,
+  height: 600,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -36,18 +36,16 @@ export default function FiltroAtendimentosModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const { register, handleSubmit, control, reset } =
+  const { register, handleSubmit, control, reset, watch } =
     useForm<FiltrosAtendimento>({
       defaultValues: {
-        dataInicio: null,
-        dataFim: null,
+        data: null,
         paciente: "",
       },
     });
 
   const [filtrosAtivos, setFiltrosAtivos] = React.useState<{
-    dataInicio?: string;
-    dataFim?: string;
+    data?: string;
     paciente?: string;
   }>({});
 
@@ -61,153 +59,136 @@ export default function FiltroAtendimentosModal() {
     queryFn: async () => {
       try {
         const response = await filtrarAtendimentos(filtrosAtivos);
-        // Garante que sempre retorne um array
         return Array.isArray(response) ? response : [];
       } catch (error) {
         console.error("Erro ao buscar atendimentos:", error);
         return [];
       }
     },
-    enabled: false,
+    enabled: false, // ativar manualmente
   });
 
   const onSubmit = (data: FiltrosAtendimento) => {
-    const filtros = {
-      dataInicio: data.dataInicio?.toISOString(),
-      dataFim: data.dataFim?.toISOString(),
-      paciente: data.paciente || undefined,
-    };
+    const filtros: typeof filtrosAtivos = {};
 
-    console.log(atendimentos);
+    if (data.paciente.trim()) filtros.paciente = data.paciente.trim();
+    if (data.data) filtros.data = data.data.format("YYYY-MM-DD");
 
     setFiltrosAtivos(filtros);
-    refetch();
+
+    if (Object.keys(filtros).length > 0) {
+      refetch();
+    }
   };
 
   const limparFiltros = () => {
     reset();
     setFiltrosAtivos({});
-    refetch();
   };
-
-  const atendimentosArray = Array.isArray(atendimentos) ? atendimentos : [];
 
   return (
     <div>
       <button onClick={handleOpen} className={styles.btnModal}>
         Filtrar
       </button>
-      <Modal
+      <Modal className={styles.modal}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography variant="h6" component="h2" mb={3}>
-            Filtrar Atendimentos
-          </Typography>
-
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <Stack spacing={3}>
-                <Controller
-                  name="dataInicio"
-                  control={control}
-                  render={({ field }) => (
-                    <DatePicker
-                      label="Data Início"
-                      value={field.value}
-                      onChange={field.onChange}
-                      slotProps={{ textField: { fullWidth: true } }}
-                    />
-                  )}
-                />
-
-                <Controller
-                  name="dataFim"
-                  control={control}
-                  render={({ field }) => (
-                    <DatePicker
-                      label="Data Fim"
-                      value={field.value}
-                      onChange={field.onChange}
-                      slotProps={{ textField: { fullWidth: true } }}
-                    />
-                  )}
-                />
-
-                <TextField
-                  label="Nome do Paciente"
-                  {...register("paciente")}
-                  fullWidth
-                />
-
-                <Stack direction="row" spacing={2} justifyContent="flex-end">
-                  <Button
-                    type="button"
-                    variant="outlined"
-                    onClick={limparFiltros}
-                  >
-                    Limpar
-                  </Button>
-                  <Button type="submit" variant="contained">
-                    Aplicar Filtros
-                  </Button>
+        <div className={styles.modalBox}>
+          <Box >
+            <Typography variant="h6" component="h2" mb={3}>
+              Filtrar Atendimentos
+            </Typography>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <Stack spacing={3}>
+                  <Controller
+                    name="data"
+                    control={control}
+                    render={({ field }) => (
+                      <DatePicker
+                        label="Data"
+                        value={field.value}
+                        onChange={field.onChange}
+                        slotProps={{ textField: { fullWidth: true } }}
+                      />
+                    )}
+                  />
+                  <TextField
+                    label="Nome do Paciente"
+                    {...register("paciente")}
+                    fullWidth
+                  />
+                  <Stack direction="row" spacing={2} justifyContent="flex-end">
+                    <Button
+                      type="button"
+                      variant="outlined"
+                      onClick={limparFiltros}
+                    >
+                      Limpar
+                    </Button>
+                    <Button type="submit" variant="contained">
+                      Aplicar Filtros
+                    </Button>
+                  </Stack>
                 </Stack>
-              </Stack>
-            </LocalizationProvider>
-          </form>
-
-          <Box mt={4}>
-            {isLoading ? (
-              <CircularProgress />
-            ) : isError ? (
-              <Typography color="error">
-                Ocorreu um erro ao buscar os atendimentos
-              </Typography>
-            ) : (
-              <>
-                <Typography variant="subtitle1" mb={2}>
-                  Resultados encontrados: {atendimentosArray.length}
+              </LocalizationProvider>
+            </form>
+            <Box mt={3}>
+              {isLoading ? (
+                <CircularProgress />
+              ) : isError ? (
+                <Typography color="error">
+                  Ocorreu um erro ao buscar os atendimentos
                 </Typography>
-
-                {atendimentosArray.length > 0 ? (
-                  <ul style={{ listStyle: "none", padding: 0 }}>
-                    {atendimentosArray.map((atendimento) => (
-                      <li
-                        key={atendimento.id}
-                        style={{
-                          marginBottom: "16px",
-                          padding: "12px",
-                          border: "1px solid #eee",
-                          borderRadius: "4px",
-                        }}
-                      >
-                        <Typography variant="subtitle2">
-                          Paciente: {atendimento.paciente}
-                        </Typography>
-                        <Typography>
-                          Data:{" "}
-                          {dayjs(atendimento.dataAtendimento).format(
-                            "DD/MM/YYYY HH:mm"
-                          )}
-                        </Typography>
-                        <Typography>
-                          Observações: {atendimento.observacoes}
-                        </Typography>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <Typography>
-                    Nenhum atendimento encontrado com os filtros aplicados
+              ) : (
+                <>
+                  <Typography variant="subtitle1" mb={2}>
+                    Resultados encontrados: {atendimentos.length}
                   </Typography>
-                )}
-              </>
-            )}
+                  {atendimentos.length > 0 ? (
+                    <ul style={{ listStyle: "none", padding: 0 }}>
+                      {atendimentos.map((atendimento) => (
+                        <li
+                          key={atendimento.id}
+                          style={{
+                            marginBottom: "16px",
+                            padding: "12px",
+                            border: "1px solid #eee",
+                            borderRadius: "4px",
+                          }}
+                        >
+                          <Typography variant="subtitle2">
+                            Paciente: {atendimento.paciente}
+                          </Typography>
+                          <Typography>
+                            Data:{" "}
+                            {dayjs(atendimento.dataAtendimento).format(
+                              "DD/MM/YYYY HH:mm"
+                            )}
+                          </Typography>
+                          <Typography>
+                            Observações: {atendimento.observacoes}
+                          </Typography>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <Typography>
+                      Nenhum atendimento encontrado com os filtros aplicados
+                    </Typography>
+                  )}
+                </>
+              )}
+            </Box>
           </Box>
-        </Box>
+        </div>
+
+
+
       </Modal>
     </div>
   );
