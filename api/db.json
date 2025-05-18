@@ -47,6 +47,14 @@
       "medico": "Silva",
       "paciente": "Roberto",
       "dataHora": "2025-04-30T03:03:00Z"
+    },
+    {
+      "id": "ae39",
+      "convenioNome": "Unimed",
+      "especialidadeNome": "Cardiologia",
+      "medico": "Dr. João",
+      "paciente": "Roberto",
+      "dataHora": "2025-05-19T11:10:00Z"
     }
   ],
   "atendimentos": [
@@ -56,6 +64,13 @@
       "observacoes": "wdaw",
       "dataAtendimento": "2025-05-18T11:56:05.477Z",
       "paciente": "Paiva melo"
+    },
+    {
+      "id": "c77d",
+      "agendamentoId": null,
+      "observacoes": "Liberado",
+      "dataAtendimento": "2025-05-18T14:12:59.566Z",
+      "paciente": "Alberto Pacheco"
     }
   ]
 }

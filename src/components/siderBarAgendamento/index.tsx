@@ -9,7 +9,8 @@ import { toast } from "react-toastify";
 import logoLiga from "../../assets/logo_cor.png";
 
 import styles from "./styles.module.css";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
+import { useMemo } from "react";
 
 const Index = () => {
   const queryClient = useQueryClient();
@@ -28,8 +29,6 @@ const Index = () => {
     queryKey: ["disponibilidades"],
     queryFn: getHorariosDisponiveis,
   });
-
-  console.log(disponibilidades);
 
   const { mutate, isPending } = useMutation({
     mutationFn: agendarConsulta,
@@ -54,12 +53,61 @@ const Index = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
+  // Monitora especialidade e médico selecionado
+  const especialidadeSelecionada = useWatch({
+    control,
+    name: "especialidadeNome",
+  });
+  const medicoSelecionado = useWatch({ control, name: "medico" });
 
+  // Descobre o ID da especialidade pelo nome
+  const especialidadeIdSelecionado = useMemo(() => {
+    const encontrada = especialidades?.find(
+      (esp) => esp.nome === especialidadeSelecionada
+    );
+    return encontrada?.id ? parseInt(encontrada.id) : null;
+  }, [especialidades, especialidadeSelecionada]);
+
+  // Filtra médicos com base na especialidade
+  // Defina o tipo para os itens de disponibilidade
+  type Disponibilidade = {
+    especialidadeId: number;
+    medico: string;
+    horaInicio: string;
+    horaFim: string;
+    // adicione outros campos se necessário
+  };
+
+  const medicosDisponiveis = useMemo(() => {
+    if (!disponibilidades || !especialidadeIdSelecionado) return [];
+    const nomesUnicos = new Set<string>();
+    return (disponibilidades as Disponibilidade[])
+      .filter((d: Disponibilidade) => d.especialidadeId === especialidadeIdSelecionado)
+      .filter((d: Disponibilidade) => {
+        if (!nomesUnicos.has(d.medico)) {
+          nomesUnicos.add(d.medico);
+          return true;
+        }
+        return false;
+      })
+      .map((d: Disponibilidade) => d.medico);
+  }, [disponibilidades, especialidadeIdSelecionado]);
+
+  // Obtém os horários do médico selecionado
+  const horariosDoMedico = useMemo(() => {
+    if (!disponibilidades || !medicoSelecionado) return null;
+    return disponibilidades.find(
+      (d) =>
+        d.medico === medicoSelecionado &&
+        d.especialidadeId === especialidadeIdSelecionado
+    );
+  }, [disponibilidades, medicoSelecionado, especialidadeIdSelecionado]);
+
+  const onSubmit = (data: FormValues) => {
     const dataHora = `${data.dataSelecionada}T${data.horarioSelecionado}:00Z`;
 
     const values = {
@@ -114,12 +162,31 @@ const Index = () => {
           )}
         </label>
 
+        {/* Médico */}
+        {medicosDisponiveis.length > 0 && (
+          <label>
+            Médico:
+            <select {...register("medico", { required: true })}>
+              <option value="">Selecione</option>
+              {medicosDisponiveis.map((medico) => (
+                <option key={medico} value={medico}>
+                  {medico}
+                </option>
+              ))}
+            </select>
+            {errors.medico && (
+              <span className={styles.errorMessage}>Campo obrigatório</span>
+            )}
+          </label>
+        )}
+
         {/* Data */}
         <label>
           Data:
           <input
             type="date"
             {...register("dataSelecionada", { required: true })}
+            disabled={!horariosDoMedico}
           />
           {errors.dataSelecionada && (
             <span className={styles.errorMessage}>Campo obrigatório</span>
@@ -132,20 +199,13 @@ const Index = () => {
           <input
             type="time"
             {...register("horarioSelecionado", { required: true })}
+            disabled={!horariosDoMedico}
+            min={horariosDoMedico?.horaInicio}
+            max={horariosDoMedico?.horaFim}
           />
           {errors.horarioSelecionado && (
             <span className={styles.errorMessage}>Campo obrigatório</span>
           )}
-        </label>
-
-        {/* Médico (opcional) */}
-        <label>
-          Médico (opcional):
-          <input
-            type="text"
-            {...register("medico")}
-            placeholder="Nome do médico"
-          />
         </label>
 
         {/* Nome do paciente */}
