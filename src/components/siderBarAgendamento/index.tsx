@@ -86,7 +86,9 @@ const Index = () => {
     if (!disponibilidades || !especialidadeIdSelecionado) return [];
     const nomesUnicos = new Set<string>();
     return (disponibilidades as Disponibilidade[])
-      .filter((d: Disponibilidade) => d.especialidadeId === especialidadeIdSelecionado)
+      .filter(
+        (d: Disponibilidade) => d.especialidadeId === especialidadeIdSelecionado
+      )
       .filter((d: Disponibilidade) => {
         if (!nomesUnicos.has(d.medico)) {
           nomesUnicos.add(d.medico);

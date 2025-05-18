@@ -4,7 +4,6 @@ import tardeIcon from "../../assets/icons/tarde.svg";
 import noiteIcon from "../../assets/icons/noite.svg";
 import Finalizados from "../../components/finalizados/index";
 import ModalAtendimento from "../modalAtendimento/index";
-import ModalFiltrarPorData from "../modalFiltrarPorData/index";
 
 import { useQuery } from "@tanstack/react-query";
 import { type Agendamento, getAgendamentos } from "../../axios/axios";
@@ -46,52 +45,57 @@ const Index = () => {
     <section className={styles.agendamentosContent}>
       <section className={styles.container}>
         <div className={styles.title}>
-          <h2>Agendados</h2>
-          <p>Consulte Todos os Pacientes de Agendados</p>
-          <ModalFiltrarPorData />
+          <h2>Atendimentos Agendados</h2>
         </div>
 
         <div className={styles.agendamentos}>
-          {data?.map((agendamento) => {
-            const { dia, hora } = formatarDataHora(agendamento.dataHora);
-            const { label, icon } = getPeriodoInfo(agendamento.dataHora);
+          {data && data.length === 0 ? (
+            <p className={styles.semAgendamentos}>
+              Nenhum agendamento encontrado.
+            </p>
+          ) : (
+            data?.map((agendamento) => {
+              const { dia, hora } = formatarDataHora(agendamento.dataHora);
+              const { label, icon } = getPeriodoInfo(agendamento.dataHora);
 
-            return (
-              <div key={agendamento.id} className={styles.agendamentoItem}>
-                <div className={styles.agendaTitle}>
-                  <h3 className={styles.day}>
-                    {label}{" "}
-                    <img src={icon} alt={`ícone ${label.toLowerCase()}`} />
-                  </h3>
-                  <ModalAtendimento
-                    agendamentoId={agendamento.id}
-                    paciente={agendamento.paciente}
-                  />
-                </div>
+              return (
+                <div key={agendamento.id} className={styles.agendamentoItem}>
+                  <div className={styles.agendaTitle}>
+                    <h3 className={styles.day}>
+                      {label}{" "}
+                      <img src={icon} alt={`ícone ${label.toLowerCase()}`} />
+                    </h3>
+                    <ModalAtendimento
+                      agendamentoId={agendamento.id}
+                      paciente={agendamento.paciente}
+                    />
+                  </div>
 
-                <div className={styles.infoContent}>
-                  <p className={styles.infoItem}>
-                    Paciente: <span>{agendamento.paciente}</span>
-                  </p>
-                  <p className={styles.infoItem}>
-                    Médico: <span>{agendamento.medico}</span>
-                  </p>
-                  <p className={styles.infoItem}>
-                    Especialidade: <span>{agendamento.especialidadeNome}</span>
-                  </p>
-                  <p className={styles.infoItem}>
-                    Convenio: <span>{agendamento.convenioNome}</span>
-                  </p>
-                  <p className={styles.infoItem}>
-                    Dia: <span>{dia}</span>
-                  </p>
-                  <p className={styles.infoItem}>
-                    Hora: <span>{hora}</span>
-                  </p>
+                  <div className={styles.infoContent}>
+                    <p className={styles.infoItem}>
+                      Paciente: <span>{agendamento.paciente}</span>
+                    </p>
+                    <p className={styles.infoItem}>
+                      Médico: <span>{agendamento.medico}</span>
+                    </p>
+                    <p className={styles.infoItem}>
+                      Especialidade:{" "}
+                      <span>{agendamento.especialidadeNome}</span>
+                    </p>
+                    <p className={styles.infoItem}>
+                      Convenio: <span>{agendamento.convenioNome}</span>
+                    </p>
+                    <p className={styles.infoItem}>
+                      Dia: <span>{dia}</span>
+                    </p>
+                    <p className={styles.infoItem}>
+                      Hora: <span>{hora}</span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
 
         <Finalizados />

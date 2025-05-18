@@ -18,10 +18,7 @@
     color: #fff;
     text-align: center;
     font-size: 1.6rem;
-
-    p {
-      font-size: 1.3rem;
-    }
+    font-weight: bold;
   }
 }
 
@@ -93,4 +90,11 @@
       text-decoration: underline;
     }
   }
+}
+
+.semAgendamentos {
+  color: rgba(255, 255, 255, 0.301);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 200;
 }

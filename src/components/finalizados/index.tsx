@@ -1,6 +1,8 @@
 import styles from "./styles.module.css";
 import { getAtendimentos, type Atendimento } from "../../axios/axios";
 import { useQuery } from "@tanstack/react-query";
+import Filtrar from '../modalFiltrarPorData/index';
+
 const index = () => {
   const { data, isLoading, isError } = useQuery<Atendimento[]>({
     queryKey: ["atendimentos"],
@@ -12,7 +14,7 @@ const index = () => {
 
   return (
     <section className={styles.sectionFinalizados}>
-      <h2>Ultimos Atendimentos Finalizados:</h2>
+      <h2>Ultimos Atendimentos Finalizados <Filtrar/> </h2>
 
       {data?.length === 0 ? (
         <p>Nenhum atendimento encontrado.</p>

@@ -1,0 +1,15 @@
+.btnModal {
+    border: none;
+    color: #fdfdfd !important; 
+    outline: none;
+    background-color: transparent;
+    text-decoration: underline;
+    font-size: 1.4rem;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        scale: 1.1;
+        text-decoration: underline;
+    }
+}
