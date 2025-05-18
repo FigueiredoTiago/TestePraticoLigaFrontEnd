@@ -32,32 +32,6 @@
   ],
   "agendamentos": [
     {
-      "id": "1",
-      "paciente": "Ana Silva",
-      "especialidadeId": 1,
-      "especialidadeNome": "Cardiologia",
-      "convenioId": 1,
-      "convenioNome": "Unimed",
-      "dataHora": "2025-05-12T09:00:00Z",
-      "medico": "Dr. João"
-    },
-    {
-      "id": "fb38",
-      "convenioNome": "SulAmérica",
-      "especialidadeNome": "Cardiologia",
-      "medico": "Silva",
-      "paciente": "Andre loper",
-      "dataHora": "2025-05-27T10:00:00Z"
-    },
-    {
-      "id": "7bef",
-      "convenioNome": "SulAmérica",
-      "especialidadeNome": "Cardiologia",
-      "medico": "Silva",
-      "paciente": "Roberto",
-      "dataHora": "2025-04-30T03:03:00Z"
-    },
-    {
       "id": "1f71",
       "convenioNome": "SulAmérica",
       "especialidadeNome": "Cardiologia",
@@ -73,41 +47,6 @@
       "observacoes": "wdaw",
       "dataAtendimento": "2025-05-18T11:56:05.477Z",
       "paciente": "Paiva melo"
-    },
-    {
-      "id": "ad8d",
-      "agendamentoId": null,
-      "observacoes": "",
-      "dataAtendimento": "2025-05-18T11:57:23.721Z",
-      "paciente": "marcos"
-    },
-    {
-      "id": "34f4",
-      "agendamentoId": null,
-      "observacoes": "",
-      "dataAtendimento": "2025-05-18T11:58:35.280Z",
-      "paciente": "pedro"
-    },
-    {
-      "id": "a17c",
-      "agendamentoId": null,
-      "observacoes": "",
-      "dataAtendimento": "2025-05-18T12:46:30.814Z",
-      "paciente": "Texeira"
-    },
-    {
-      "id": "5fab",
-      "agendamentoId": null,
-      "observacoes": "",
-      "dataAtendimento": "2025-05-18T13:11:04.936Z",
-      "paciente": "Roberto"
-    },
-    {
-      "id": "f3b6",
-      "agendamentoId": null,
-      "observacoes": "",
-      "dataAtendimento": "2025-05-18T13:20:57.489Z",
-      "paciente": "Roberto"
     }
   ]
 }

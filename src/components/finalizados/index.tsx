@@ -21,7 +21,7 @@ const index = () => {
           {data?.map((atendimento) => (
             <li key={atendimento.id} className={styles.cardAtendimento}>
               <p>
-                <strong>ID do Agendamento:</strong> {atendimento.agendamentoId}
+                <strong>ID do Agendamento:</strong> {atendimento.id}
               </p>
               <p>
                 <strong>Data:</strong>{" "}

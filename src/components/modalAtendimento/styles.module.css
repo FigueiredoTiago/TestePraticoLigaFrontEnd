@@ -1,19 +1,18 @@
-.btnModal {
-  color: #fdfdfd;
-}
+
 
 .modal {
   background-color: #3d3d3d2a;
 }
 
 .box {
+  width: 60rem;
+  height: 30rem;
+  background-color: #e67070;
+  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #f2f2f2;
-  width: 70rem;
-  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
 
   button {
     width: 20rem;
@@ -29,4 +28,8 @@
   .text {
     border: none;
   }
+}
+
+.btnModal {
+  color: #fff !important;
 }
