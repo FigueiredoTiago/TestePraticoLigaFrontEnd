@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://localhost:3000", // Altere para a URL correta da sua API
+  baseURL: "http://localhost:3000",
 });
 
 export type Agendamento = {
@@ -19,7 +19,7 @@ export type FiltrosAgendamento = {
   dataInicio?: string; // Formato AAAA-MM-DD
   dataFim?: string; // Formato AAAA-MM-DD
   paciente?: string;
-  // Você pode adicionar outros filtros aqui
+  
 };
 
 export interface Especialidade {

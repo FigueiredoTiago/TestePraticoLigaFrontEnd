@@ -49,7 +49,7 @@ export default function BasicModal({ agendamentoId, paciente }: ModalProps) {
       await deletarAgendamento(dados.agendamentoId); // deleta agendamento
     },
     onSuccess: () => {
-      // Remove o agendamento da lista localmente para atualização em tempo real
+     
       toast.success("Esse atendimento Foi Finalizado.");
 
       queryClient.invalidateQueries({ queryKey: ["agendamentos"] });
