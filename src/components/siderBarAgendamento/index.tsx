@@ -110,7 +110,7 @@ const Index = () => {
   }, [disponibilidades, medicoSelecionado, especialidadeIdSelecionado]);
 
   const onSubmit = (data: FormValues) => {
-    const dataHora = `${data.dataSelecionada}T${data.horarioSelecionado}:00Z`;
+    const dataHora = `${data.dataSelecionada}T${data.horarioSelecionado}:00`;
 
     const values = {
       convenioNome: data.convenioNome,
