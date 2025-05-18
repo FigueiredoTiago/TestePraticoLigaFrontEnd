@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { newAtendimento, type NovoAtendimento, api } from "../../axios/axios"; // api axios para delete
 import { toast } from "react-toastify";
+import styles from './styles.module.css';
 
 const style = {
   position: "absolute",
@@ -73,14 +74,15 @@ export default function BasicModal({ agendamentoId, paciente }: ModalProps) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Finalizar?</Button>
+      <Button className={styles.btnModal} onClick={handleOpen}>Finalizar?</Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        className={styles.modal}
       >
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={style}>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={style} className={styles.box}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Finalizar Atendimento
           </Typography>
@@ -90,9 +92,10 @@ export default function BasicModal({ agendamentoId, paciente }: ModalProps) {
             fullWidth
             multiline
             rows={3}
-            label="Observações"
+            label="Observações sobre esse atendimento"
             margin="normal"
             placeholder="Digite as observações (opcional)"
+            className={styles.text}
           />
 
           <Button

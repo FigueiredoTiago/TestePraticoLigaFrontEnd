@@ -64,14 +64,6 @@
       "medico": "Silva",
       "paciente": "Roberto",
       "dataHora": "2025-04-30T03:03:00Z"
-    },
-    {
-      "id": "2341",
-      "convenioNome": "SulAmérica",
-      "especialidadeNome": "Cardiologia",
-      "medico": "Silva",
-      "paciente": "Roberto",
-      "dataHora": "2025-04-30T03:03:00Z"
     }
   ],
   "atendimentos": [
@@ -108,6 +100,13 @@
       "agendamentoId": null,
       "observacoes": "",
       "dataAtendimento": "2025-05-18T13:11:04.936Z",
+      "paciente": "Roberto"
+    },
+    {
+      "id": "f3b6",
+      "agendamentoId": null,
+      "observacoes": "",
+      "dataAtendimento": "2025-05-18T13:20:57.489Z",
       "paciente": "Roberto"
     }
   ]
