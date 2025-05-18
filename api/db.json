@@ -28,6 +28,15 @@
       "horaInicio": "08:00",
       "horaFim": "12:00",
       "duracaoConsultaMinutos": 30
+    },
+    {
+      "id": "2",
+      "medico": "Dr. Paulo",
+      "especialidadeId": 2,
+      "diaSemana": "Quarta-feira",
+      "horaInicio": "14:00",
+      "horaFim": "17:30",
+      "duracaoConsultaMinutos": 30
     }
   ],
   "agendamentos": [

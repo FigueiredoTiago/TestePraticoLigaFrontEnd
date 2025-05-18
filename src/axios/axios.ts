@@ -85,7 +85,7 @@ const getConvenios = async (): Promise<Convenio[]> => {
 
 //Buscar horários disponíveis
 const getHorariosDisponiveis = async () => {
-  const response = await api.post(`/disponibilidades`);
+  const response = await api.get(`/disponibilidades`);
   return response.data;
 };
 

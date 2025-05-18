@@ -3,6 +3,7 @@ import {
   getEspecialidades,
   getConvenios,
   agendarConsulta,
+  getHorariosDisponiveis,
 } from "../../axios/axios";
 import { toast } from "react-toastify";
 import logoLiga from "../../assets/logo_cor.png";
@@ -22,6 +23,13 @@ const Index = () => {
     queryKey: ["convenios"],
     queryFn: getConvenios,
   });
+
+  const { data: disponibilidades } = useQuery({
+    queryKey: ["disponibilidades"],
+    queryFn: getHorariosDisponiveis,
+  });
+
+  console.log(disponibilidades);
 
   const { mutate, isPending } = useMutation({
     mutationFn: agendarConsulta,
