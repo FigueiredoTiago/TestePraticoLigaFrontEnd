@@ -1,5 +1,8 @@
 # 🩺 Sistema de Agendamento Médico
 
+![Preview do sistema](./src/assets/Captura%20de%20tela%202025-05-18%20120427.png);
+
+
 Sistema de agendamento médico desenvolvido com **React + TypeScript**, utilizando:
 
 - `React Hook Form` para manipulação de formulários
