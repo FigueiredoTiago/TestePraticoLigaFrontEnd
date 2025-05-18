@@ -28,18 +28,6 @@
       "horaInicio": "08:00",
       "horaFim": "12:00",
       "duracaoConsultaMinutos": 30
-    },
-    {
-      "id": "d68c",
-      "especialidadeId": 1,
-      "data": "2025-05-08",
-      "medico": "saddasdas"
-    },
-    {
-      "id": "084f"
-    },
-    {
-      "id": "d00b"
     }
   ],
   "agendamentos": [
@@ -54,62 +42,42 @@
       "medico": "Dr. João"
     },
     {
-      "id": "2",
-      "paciente": "Tiago Figueiredo",
-      "especialidadeId": 1,
-      "especialidadeNome": "Cardiologia",
-      "convenioId": 1,
+      "id": "fb38",
       "convenioNome": "SulAmérica",
-      "dataHora": "2025-05-12T18:00:00Z",
-      "medico": "Dr. João"
-    },
-    {
-      "id": "e126",
-      "convenioNome": "Unimed",
       "especialidadeNome": "Cardiologia",
-      "medico": "asdssa",
-      "paciente": "dasd",
-      "dataHora": "2025-05-08T13:32:00Z"
-    },
-    {
-      "id": "6589",
-      "convenioNome": "Unimed",
-      "especialidadeNome": "Cardiologia",
-      "medico": "Dr. Moraes Oliveirea",
-      "paciente": "Alberto Pacheco",
-      "dataHora": "2025-05-07T20:24:00Z"
+      "medico": "Silva",
+      "paciente": "Andre loper",
+      "dataHora": "2025-05-27T10:00:00Z"
     }
   ],
   "atendimentos": [
     {
-      "id": "1",
-      "agendamentoId": 1,
-      "dataAtendimento": "2025-05-12T09:00:00Z",
-      "observacoes": "Paciente atendido com queixas leves"
+      "id": "67ae",
+      "agendamentoId": null,
+      "observacoes": "wdaw",
+      "dataAtendimento": "2025-05-18T11:56:05.477Z",
+      "paciente": "Paiva melo"
     },
     {
-      "id": "2",
-      "agendamentoId": 1,
-      "dataAtendimento": "2025-05-12T09:00:00Z",
-      "observacoes": "Paciente atendido e liberado"
-    },
-    {
-      "id": "417d",
+      "id": "ad8d",
       "agendamentoId": null,
       "observacoes": "",
-      "dataAtendimento": "2025-05-17T18:21:43.045Z"
+      "dataAtendimento": "2025-05-18T11:57:23.721Z",
+      "paciente": "marcos"
     },
     {
-      "id": "c182",
-      "agendamentoId": null,
-      "observacoes": "teste",
-      "dataAtendimento": "2025-05-17T18:23:10.219Z"
-    },
-    {
-      "id": "c789",
+      "id": "34f4",
       "agendamentoId": null,
       "observacoes": "",
-      "dataAtendimento": "2025-05-17T18:24:33.680Z"
+      "dataAtendimento": "2025-05-18T11:58:35.280Z",
+      "paciente": "pedro"
+    },
+    {
+      "id": "a17c",
+      "agendamentoId": null,
+      "observacoes": "",
+      "dataAtendimento": "2025-05-18T12:46:30.814Z",
+      "paciente": "Texeira"
     }
   ]
 }

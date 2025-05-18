@@ -7,8 +7,6 @@ const index = () => {
     queryFn: getAtendimentos,
   });
 
-  console.log(data);
-
   if (isLoading) return <p>Carregando...</p>;
   if (isError) return <p>Erro ao carregar os agendamentos.</p>;
 
@@ -33,7 +31,11 @@ const index = () => {
                 })}
               </p>
               <p>
-                <strong>Observações:</strong> {atendimento.observacoes}
+                <strong>Paciente: </strong>
+                {atendimento.paciente}
+              </p>
+              <p>
+                <strong>Observações: </strong> {atendimento.observacoes}
               </p>
             </li>
           ))}

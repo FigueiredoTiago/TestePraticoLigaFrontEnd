@@ -4,6 +4,7 @@ import tardeIcon from "../../assets/icons/tarde.svg";
 import noiteIcon from "../../assets/icons/noite.svg";
 import Finalizados from "../../components/finalizados/index";
 import ModalAtendimento from "../modalAtendimento/index";
+import ModalFiltrarPorData from "../modalFiltrarPorData/index";
 
 import { useQuery } from "@tanstack/react-query";
 import { type Agendamento, getAgendamentos } from "../../axios/axios";
@@ -47,6 +48,7 @@ const Index = () => {
         <div className={styles.title}>
           <h2>Agendados</h2>
           <p>Consulte Todos os Pacientes de Agendados</p>
+          <ModalFiltrarPorData />
         </div>
 
         <div className={styles.agendamentos}>
@@ -61,7 +63,10 @@ const Index = () => {
                     {label}{" "}
                     <img src={icon} alt={`ícone ${label.toLowerCase()}`} />
                   </h3>
-                  <ModalAtendimento agendamentoId={agendamento.id} />
+                  <ModalAtendimento
+                    agendamentoId={agendamento.id}
+                    paciente={agendamento.paciente}
+                  />
                 </div>
 
                 <div className={styles.infoContent}>

@@ -23,6 +23,7 @@ const style = {
 
 interface ModalProps {
   agendamentoId: number;
+  paciente: string;
 }
 
 const deletarAgendamento = async (id: number) => {
@@ -30,7 +31,7 @@ const deletarAgendamento = async (id: number) => {
   return response.data;
 };
 
-export default function BasicModal({ agendamentoId }: ModalProps) {
+export default function BasicModal({ agendamentoId, paciente }: ModalProps) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -52,6 +53,7 @@ export default function BasicModal({ agendamentoId }: ModalProps) {
       toast.success("Esse atendimento Foi Finalizado.");
 
       queryClient.invalidateQueries({ queryKey: ["agendamentos"] });
+      queryClient.invalidateQueries({ queryKey: ["atendimentos"] });
       handleClose();
     },
     onError: () => {
@@ -65,6 +67,7 @@ export default function BasicModal({ agendamentoId }: ModalProps) {
       agendamentoId,
       observacoes: data.observacoes,
       dataAtendimento: now,
+      paciente: paciente,
     });
   };
 
