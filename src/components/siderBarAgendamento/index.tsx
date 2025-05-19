@@ -124,7 +124,6 @@ const Index = () => {
 
   return (
     <div className={styles.sideBar}>
-
       <div className={styles.title}>
         <img src={logoLiga} alt="Logo LigaRN" />
         <h2>Agendar um Atendimento</h2>
@@ -132,8 +131,7 @@ const Index = () => {
       </div>
 
       <form className={styles.formContent} onSubmit={handleSubmit(onSubmit)}>
-        {/* Especialidade */}
-        <label>
+        <label className={styles.label}>
           Especialidade:
           <select {...register("especialidadeNome", { required: true })}>
             <option value="">Selecione</option>
@@ -148,8 +146,7 @@ const Index = () => {
           )}
         </label>
 
-        {/* Convênio */}
-        <label>
+        <label className={styles.label}>
           Convênio:
           <select {...register("convenioNome", { required: true })}>
             <option value="">Selecione</option>
@@ -164,9 +161,8 @@ const Index = () => {
           )}
         </label>
 
-        {/* Médico */}
         {medicosDisponiveis.length > 0 && (
-          <label>
+          <label className={styles.label}>
             Médico:
             <select {...register("medico", { required: true })}>
               <option value="">Selecione</option>
@@ -182,8 +178,7 @@ const Index = () => {
           </label>
         )}
 
-        {/* Data */}
-        <label>
+        <label className={styles.label}>
           Data:
           <input
             type="date"
@@ -195,8 +190,7 @@ const Index = () => {
           )}
         </label>
 
-        {/* Hora */}
-        <label>
+        <label className={styles.label}>
           Hora:
           <input
             type="time"
@@ -210,8 +204,7 @@ const Index = () => {
           )}
         </label>
 
-        {/* Nome do paciente */}
-        <label>
+        <label className={styles.label}>
           Nome do paciente:
           <input
             type="text"
@@ -223,12 +216,10 @@ const Index = () => {
           )}
         </label>
 
-        {/* Botão Agendar */}
         <button className={styles.submitBtn} type="submit" disabled={isPending}>
           {isPending ? "Agendando..." : "Agendar"}
         </button>
       </form>
-      
     </div>
   );
 };
