@@ -6,7 +6,7 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { newAtendimento, type NovoAtendimento, api } from "../../axios/axios"; // api axios para delete
+import { newAtendimento, type NovoAtendimento, api } from "../../axios/axios";
 import { toast } from "react-toastify";
 import styles from "./styles.module.css";
 

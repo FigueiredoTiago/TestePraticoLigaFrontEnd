@@ -71,8 +71,6 @@ const Index = () => {
     return encontrada?.id ?? null;
   }, [especialidades, especialidadeSelecionada]);
 
-  // Filtra médicos com base na especialidade
-  // Defina o tipo para os itens de disponibilidade
   type Disponibilidade = {
     especialidadeId: number;
     medico: string;
@@ -98,7 +96,6 @@ const Index = () => {
       .map((d: Disponibilidade) => d.medico);
   }, [disponibilidades, especialidadeIdSelecionado]);
 
-  // Obtém os horários do médico selecionado
   const horariosDoMedico = useMemo(() => {
     if (!disponibilidades || !medicoSelecionado) return null;
     return disponibilidades.find(
