@@ -1,12 +1,10 @@
 .sectionFinalizados {
-  background-color: #ffffff71;
-  width: 90%;
+  width: 100%;
   height: 35rem;
   padding: 2rem;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-  backdrop-filter: blur(10px);
   overflow-y: scroll;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .sectionFinalizados h2 {
@@ -15,8 +13,7 @@
   color: #333;
   display: flex;
   align-items: center;
-  gap: .5rem;
-  
+  gap: 0.5rem;
 }
 
 .sectionFinalizados ul {
