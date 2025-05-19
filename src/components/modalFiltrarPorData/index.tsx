@@ -18,19 +18,6 @@ type FiltrosAtendimento = {
   paciente: string;
 };
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 700,
-  height: 600,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
 export default function FiltroAtendimentosModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -91,15 +78,16 @@ export default function FiltroAtendimentosModal() {
       <button onClick={handleOpen} className={styles.btnModal}>
         Filtrar
       </button>
-      <Modal className={styles.modal}
+      <Modal
+        className={styles.modal}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <div className={styles.modalBox}>
-          <Box >
-            <Typography variant="h6" component="h2" mb={3}>
+          <Box>
+            <Typography variant="h4" component="h2" mb={3}>
               Filtrar Atendimentos
             </Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -114,6 +102,7 @@ export default function FiltroAtendimentosModal() {
                         value={field.value}
                         onChange={field.onChange}
                         slotProps={{ textField: { fullWidth: true } }}
+                        className={styles.date}
                       />
                     )}
                   />
@@ -121,18 +110,19 @@ export default function FiltroAtendimentosModal() {
                     label="Nome do Paciente"
                     {...register("paciente")}
                     fullWidth
+                    className={styles.date}
                   />
                   <Stack direction="row" spacing={2} justifyContent="flex-end">
-                    <Button
-                      type="button"
-                      variant="outlined"
+                    <button
                       onClick={limparFiltros}
+                      className={styles.btnModalForm}
                     >
                       Limpar
-                    </Button>
-                    <Button type="submit" variant="contained">
+                    </button>
+
+                    <button type="submit" className={styles.btnModalForm}>
                       Aplicar Filtros
-                    </Button>
+                    </button>
                   </Stack>
                 </Stack>
               </LocalizationProvider>
@@ -146,9 +136,9 @@ export default function FiltroAtendimentosModal() {
                 </Typography>
               ) : (
                 <>
-                  <Typography variant="subtitle1" mb={2}>
+                  <p className={styles.info}>
                     Resultados encontrados: {atendimentos.length}
-                  </Typography>
+                  </p>
                   {atendimentos.length > 0 ? (
                     <ul style={{ listStyle: "none", padding: 0 }}>
                       {atendimentos.map((atendimento) => (
@@ -177,18 +167,15 @@ export default function FiltroAtendimentosModal() {
                       ))}
                     </ul>
                   ) : (
-                    <Typography>
+                    <p className={styles.info}>
                       Nenhum atendimento encontrado com os filtros aplicados
-                    </Typography>
+                    </p>
                   )}
                 </>
               )}
             </Box>
           </Box>
         </div>
-
-
-
       </Modal>
     </div>
   );

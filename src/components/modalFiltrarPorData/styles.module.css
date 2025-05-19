@@ -14,7 +14,20 @@
   }
 }
 
+
+.btnModalForm {
+  border: none;
+  outline: none;
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  color: #fff;
+  background-color: #232425;
+  cursor: pointer;
+}
+
 .modalBox {
+  color: #fff;
+  font-size: 1.8rem;
   border-radius: 1rem;
   width: 50rem;
   height: 60rem;
@@ -26,6 +39,18 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(255, 255, 255);
+  background-color: #dc654d;
   overflow-y: scroll;
+}
+
+.info {
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+.date {
+  background-color: #fdfdfd;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
 }
