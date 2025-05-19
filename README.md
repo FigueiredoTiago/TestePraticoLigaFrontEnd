@@ -1,6 +1,6 @@
 # 🩺 Sistema de Agendamento Médico
 
-![Preview do Desktop](./src/assets/tela.png)
+![Preview do Desktop](https://raw.githubusercontent.com/FigueiredoTiago/TestePraticoLigaFrontEnd/refs/heads/main/src/assets/tela.png)
 
 Sistema de agendamento médico desenvolvido com **React + TypeScript**, utilizando:
 
