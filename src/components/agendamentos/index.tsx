@@ -38,8 +38,9 @@ const Index = () => {
     queryFn: getAgendamentos,
   });
 
-  if (isLoading) return <p>Carregando...</p>;
-  if (isError) return <p>Erro ao carregar os agendamentos.</p>;
+  if (isLoading) return <span className={styles.loader}></span>;
+
+  if (isError) return <p className={styles.error}>Erro ao carregar os agendamentos.</p>;
 
   return (
     <section className={styles.agendamentosContent}>
