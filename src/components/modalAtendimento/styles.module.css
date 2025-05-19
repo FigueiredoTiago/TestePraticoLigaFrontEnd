@@ -8,8 +8,8 @@
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #dc664d;
-  color: #000;
-  font-family: 1.6rem;
+  border-radius: 1rem;
+  color: #ffffff;
   width: 60rem;
   height: 30rem;
   font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
@@ -19,6 +19,7 @@
   flex-direction: column;
 
   button {
+    padding: 1rem 2rem;
     width: 20rem;
     color: #fff;
     background-color: #232425;
@@ -33,10 +34,7 @@
   .text {
     width: 90%;
     height: 8rem;
-    border: none;
-    outline: none;
-    color: #fff;
-    
+    background-color: #fff;
   }
 }
 

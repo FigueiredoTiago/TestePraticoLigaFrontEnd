@@ -76,7 +76,7 @@ export default function BasicModal({ agendamentoId, paciente }: ModalProps) {
           onSubmit={handleSubmit(onSubmit)}
           className={styles.box}
         >
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" variant="h5" component="h2">
             Finalizar Atendimento
           </Typography>
 
