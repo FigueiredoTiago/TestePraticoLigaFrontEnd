@@ -68,7 +68,7 @@ const Index = () => {
     const encontrada = especialidades?.find(
       (esp) => esp.nome === especialidadeSelecionada
     );
-    return encontrada?.id ?? null;
+    return encontrada ? Number(encontrada.id) : null;
   }, [especialidades, especialidadeSelecionada]);
 
   type Disponibilidade = {
@@ -76,7 +76,6 @@ const Index = () => {
     medico: string;
     horaInicio: string;
     horaFim: string;
-    // adicione outros campos se necessário
   };
 
   const medicosDisponiveis = useMemo(() => {
