@@ -15,9 +15,10 @@ Sistema de agendamento médico desenvolvido com **React + TypeScript**, utilizan
 A aplicação permite aos usuários:
 
 - Selecionar especialidades, convênios, médicos e horários disponíveis
-- Agendar consultas de forma simples e eficiente
+- Agendar consultas de forma simples e eficiente, com nome do medico, paciente, data e hora.
 - Visualizar os **últimos atendimentos realizados**
 - Filtrar os atendimentos finalizados por **data**
+- Finalizar um atendimento com uma Nota **data**
 
 ---
 
