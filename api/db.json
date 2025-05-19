@@ -176,13 +176,6 @@
       "observacoes": "Paciente Não pode Comparecer a consulta marcada.",
       "dataAtendimento": "2025-05-19T16:48:11.498Z",
       "paciente": "Pedro Matheus Pereira"
-    },
-    {
-      "id": "ab0d",
-      "agendamentoId": null,
-      "observacoes": "Retorno Agendado para 30/09/2025",
-      "dataAtendimento": "2025-05-19T16:50:28.007Z",
-      "paciente": "Marcos paiva"
     }
   ]
 }
