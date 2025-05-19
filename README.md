@@ -1,7 +1,8 @@
 # 🩺 Sistema de Agendamento Médico
 
-![Preview do sistema](./src/assets/Captura%20de%20tela%202025-05-18%20120427.png);
-
+![Preview do Desktop](./src/assets/Macbook-Air-localhost.png);
+![Preview do Tablet](./src/assets/iPad-PRO-11-localhost.png);
+![Preview do Modal](./src/assets/Macbook-Air-modal.png);
 
 Sistema de agendamento médico desenvolvido com **React + TypeScript**, utilizando:
 
@@ -96,4 +97,4 @@ A API fake expõe as seguintes rotas:
 
 ## 👨‍💻 Desenvolvedor
 
-**Tiago Figueiredo**  
+**Tiago Figueiredo**
