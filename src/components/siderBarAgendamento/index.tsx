@@ -68,7 +68,7 @@ const Index = () => {
     const encontrada = especialidades?.find(
       (esp) => esp.nome === especialidadeSelecionada
     );
-    return encontrada?.id ? parseInt(encontrada.id) : null;
+    return encontrada?.id ?? null;
   }, [especialidades, especialidadeSelecionada]);
 
   // Filtra médicos com base na especialidade
@@ -102,7 +102,7 @@ const Index = () => {
   const horariosDoMedico = useMemo(() => {
     if (!disponibilidades || !medicoSelecionado) return null;
     return disponibilidades.find(
-      (d) =>
+      (d: any) =>
         d.medico === medicoSelecionado &&
         d.especialidadeId === especialidadeIdSelecionado
     );
