@@ -2,10 +2,6 @@
 
 ![Preview do Desktop](./src/assets/mac.png)
 
-![Preview do Tablet](./src/assets/iPad-PRO-11-localhost.png)
-
-![Preview do Modal](./src/assets/modal.png)
-
 Sistema de agendamento médico desenvolvido com **React + TypeScript**, utilizando:
 
 - `React Hook Form` para manipulação de formulários
