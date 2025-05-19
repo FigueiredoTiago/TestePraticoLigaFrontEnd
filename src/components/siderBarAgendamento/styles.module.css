@@ -1,12 +1,12 @@
 .sideBar {
-  height: 98dvh;
-  width: 35rem;
+  height: 100dvh;
+  width: 45rem;
+  max-width: 50rem;
   padding: 1rem;
-  border-radius: 1rem;
   background-color: #232225;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.479);
   color: #fff;
-}
+} 
 
 .title {
   color: #fdfdfd;
@@ -32,11 +32,6 @@
     width: 100%;
     max-width: 10rem;
   }
-}
-
-.sideBar {
-  padding: 2rem;
-  width: 35rem;
 }
 
 .title {
