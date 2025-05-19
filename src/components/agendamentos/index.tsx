@@ -40,7 +40,8 @@ const Index = () => {
 
   if (isLoading) return <span className={styles.loader}></span>;
 
-  if (isError) return <p className={styles.error}>Erro ao carregar os agendamentos.</p>;
+  if (isError)
+    return <p className={styles.error}>Erro ao carregar os agendamentos.</p>;
 
   return (
     <section className={styles.agendamentosContent}>
@@ -74,23 +75,28 @@ const Index = () => {
 
                   <div className={styles.infoContent}>
                     <p className={styles.infoItem}>
-                      Paciente: <span>{agendamento.paciente}</span>
+                      <span className={styles.infoSpan}>Paciente:</span>{" "}
+                      <span> {agendamento.paciente}</span>
                     </p>
                     <p className={styles.infoItem}>
-                      Médico: <span>{agendamento.medico}</span>
+                      <span className={styles.infoSpan}>Médico:</span>{" "}
+                      <span>{agendamento.medico}</span>
                     </p>
                     <p className={styles.infoItem}>
-                      Especialidade:{" "}
+                      <span className={styles.infoSpan}>Especialidade:</span>{" "}
                       <span>{agendamento.especialidadeNome}</span>
                     </p>
                     <p className={styles.infoItem}>
-                      Convenio: <span>{agendamento.convenioNome}</span>
+                      <span className={styles.infoSpan}>Convenio:</span>{" "}
+                      <span>{agendamento.convenioNome}</span>
                     </p>
                     <p className={styles.infoItem}>
-                      Dia: <span>{dia}</span>
+                      <span className={styles.infoSpan}>Dia:</span>{" "}
+                      <span>{dia}</span>
                     </p>
                     <p className={styles.infoItem}>
-                      Hora: <span>{hora}</span>
+                      <span className={styles.infoSpan}>Hora:</span>{" "}
+                      <span>{hora}</span>
                     </p>
                   </div>
                 </div>
