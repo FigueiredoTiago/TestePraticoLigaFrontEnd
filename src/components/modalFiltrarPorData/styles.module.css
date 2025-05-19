@@ -14,12 +14,11 @@
   }
 }
 
-
 .btnModalForm {
   border: none;
   outline: none;
   padding: 1rem 2rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   color: #fff;
   background-color: #232425;
   cursor: pointer;
@@ -53,4 +52,9 @@
   border: none;
   outline: none;
   border-radius: 1rem;
+}
+
+label {
+  color: #000000 !important;
+  font-size: 1.3rem !important;
 }
