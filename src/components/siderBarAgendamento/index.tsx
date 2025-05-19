@@ -124,6 +124,7 @@ const Index = () => {
 
   return (
     <div className={styles.sideBar}>
+
       <div className={styles.title}>
         <img src={logoLiga} alt="Logo LigaRN" />
         <h2>Agendar um Atendimento</h2>
@@ -227,6 +228,7 @@ const Index = () => {
           {isPending ? "Agendando..." : "Agendar"}
         </button>
       </form>
+      
     </div>
   );
 };

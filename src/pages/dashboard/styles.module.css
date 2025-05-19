@@ -1,6 +1,9 @@
 .dashboard {
-    min-height: 100dvh;
-    display: flex;
-    align-items: center;
-    
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 }
