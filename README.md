@@ -27,7 +27,7 @@ A aplicação permite aos usuários:
 - ⚛️ **React**
 - ⛓️ **TypeScript**
 - 💅 **CSS Modules**
-- 🔄 **React TanStack Query**
+- 🔄 **React TanStack Query + ToastFy para Avisos**
 - 📝 **React Hook Form**
 - 🧩 **Material UI** (em alguns componentes)
 - 🗃️ **JSON Server** (API fake para simulação)
