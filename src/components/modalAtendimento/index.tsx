@@ -8,18 +8,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { newAtendimento, type NovoAtendimento, api } from "../../axios/axios"; // api axios para delete
 import { toast } from "react-toastify";
-import styles from './styles.module.css';
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "background.paper",
-  borderRadius: "8px",
-  boxShadow: 24,
-  p: 4,
-};
+import styles from "./styles.module.css";
 
 interface ModalProps {
   agendamentoId: number;
@@ -49,7 +38,6 @@ export default function BasicModal({ agendamentoId, paciente }: ModalProps) {
       await deletarAgendamento(dados.agendamentoId); // deleta agendamento
     },
     onSuccess: () => {
-     
       toast.success("Esse atendimento Foi Finalizado.");
 
       queryClient.invalidateQueries({ queryKey: ["agendamentos"] });
@@ -73,7 +61,9 @@ export default function BasicModal({ agendamentoId, paciente }: ModalProps) {
 
   return (
     <div>
-      <Button className={styles.btnModal} onClick={handleOpen}>Finalizar?</Button>
+      <Button className={styles.btnModal} onClick={handleOpen}>
+        Finalizar?
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -81,7 +71,11 @@ export default function BasicModal({ agendamentoId, paciente }: ModalProps) {
         aria-describedby="modal-modal-description"
         className={styles.modal}
       >
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={style} className={styles.box}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+          className={styles.box}
+        >
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Finalizar Atendimento
           </Typography>

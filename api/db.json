@@ -7,6 +7,14 @@
     {
       "id": "2",
       "nome": "Dermatologia"
+    },
+    {
+      "id": "3",
+      "nome": "Oncologia"
+    },
+    {
+      "id": "4",
+      "nome": "Cirurgia geral"
     }
   ],
   "convenios": [
@@ -17,6 +25,14 @@
     {
       "id": "2",
       "nome": "SulAmérica"
+    },
+    {
+      "id": "3",
+      "nome": "Amil"
+    },
+    {
+      "id": "4",
+      "nome": "NotreDame"
     }
   ],
   "disponibilidades": [
@@ -37,9 +53,108 @@
       "horaInicio": "14:00",
       "horaFim": "17:30",
       "duracaoConsultaMinutos": 30
+    },
+    {
+      "id": "3",
+      "medico": "Dr. Luiz antonio",
+      "especialidadeId": 3,
+      "diaSemana": "sexta-feira",
+      "horaInicio": "09:00",
+      "horaFim": "17:30",
+      "duracaoConsultaMinutos": 30
+    },
+    {
+      "id": "3",
+      "medico": "Dr. Tiago Figueiredo",
+      "especialidadeId": 4,
+      "diaSemana": "quinta-feira",
+      "horaInicio": "09:00",
+      "horaFim": "19:30",
+      "duracaoConsultaMinutos": 30
     }
   ],
-  "agendamentos": [],
+  "agendamentos": [
+    {
+      "id": "f8a9",
+      "convenioNome": "Amil",
+      "especialidadeNome": "Cardiologia",
+      "medico": "Dr. João",
+      "paciente": "Tiago Figueiredo",
+      "dataHora": "2025-05-29T09:50:00"
+    },
+    {
+      "id": "cf0a",
+      "convenioNome": "NotreDame",
+      "especialidadeNome": "Cirurgia geral",
+      "medico": "Dr. Tiago Figueiredo",
+      "paciente": "Pedro Matheus Pereira",
+      "dataHora": "2025-05-29T18:44:00"
+    },
+    {
+      "id": "8232",
+      "convenioNome": "SulAmérica",
+      "especialidadeNome": "Dermatologia",
+      "medico": "Dr. Paulo",
+      "paciente": "Ana Paula Meneses ",
+      "dataHora": "2025-05-14T15:46:00"
+    },
+    {
+      "id": "cfa3",
+      "convenioNome": "SulAmérica",
+      "especialidadeNome": "Dermatologia",
+      "medico": "Dr. Paulo",
+      "paciente": "Pedro Matheus Pereira",
+      "dataHora": "2025-05-17T14:46:00"
+    },
+    {
+      "id": "2a00",
+      "convenioNome": "Unimed",
+      "especialidadeNome": "Cirurgia geral",
+      "medico": "Dr. Tiago Figueiredo",
+      "paciente": "Marcos paiva",
+      "dataHora": "2025-05-24T18:49:00"
+    },
+    {
+      "id": "25d7",
+      "convenioNome": "SulAmérica",
+      "especialidadeNome": "Oncologia",
+      "medico": "Dr. Luiz antonio",
+      "paciente": "Roberto Pacheco",
+      "dataHora": "2025-05-23T16:49:00"
+    },
+    {
+      "id": "4f14",
+      "convenioNome": "Amil",
+      "especialidadeNome": "Cardiologia",
+      "medico": "Dr. João",
+      "paciente": "Antonio Jose",
+      "dataHora": "2025-05-30T11:02:00"
+    },
+    {
+      "id": "fabb",
+      "convenioNome": "Amil",
+      "especialidadeNome": "Cardiologia",
+      "medico": "Dr. João",
+      "paciente": "Maria de Fatima",
+      "dataHora": "2025-05-30T10:02:00"
+    },
+    {
+      "id": "4210",
+      "convenioNome": "Amil",
+      "especialidadeNome": "Dermatologia",
+      "medico": "Dr. Paulo",
+      "paciente": "Jose Silva",
+      "dataHora": "2025-05-31T14:02:00"
+    },
+    {
+      "id": "aee3",
+      "convenioNome": "Amil",
+      "especialidadeNome": "Dermatologia",
+      "medico": "Dr. Paulo",
+      "paciente": "Marina mendes",
+      "dataHora": "2025-05-31T14:32:00"
+    }
+  ],
   "atendimentos": [
     {
       "id": "c6bd",
@@ -47,6 +162,27 @@
       "observacoes": "Paciente Liberado.",
       "dataAtendimento": "2025-05-19T16:34:20.506Z",
       "paciente": "Tiago Figueiredo"
+    },
+    {
+      "id": "cee3",
+      "agendamentoId": null,
+      "observacoes": "Marcar Retorno daqui a 30 dias.",
+      "dataAtendimento": "2025-05-19T16:46:59.772Z",
+      "paciente": "Ana Paula Meneses "
+    },
+    {
+      "id": "8c78",
+      "agendamentoId": null,
+      "observacoes": "Paciente Não pode Comparecer a consulta marcada.",
+      "dataAtendimento": "2025-05-19T16:48:11.498Z",
+      "paciente": "Pedro Matheus Pereira"
+    },
+    {
+      "id": "ab0d",
+      "agendamentoId": null,
+      "observacoes": "Retorno Agendado para 30/09/2025",
+      "dataAtendimento": "2025-05-19T16:50:28.007Z",
+      "paciente": "Marcos paiva"
     }
   ]
 }
