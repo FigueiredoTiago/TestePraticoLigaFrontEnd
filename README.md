@@ -2,7 +2,7 @@
 
 ![Preview do Desktop](./src/assets/macg.jpg)
 
-![Preview do Modal](./src/assets/modal.jpg)
+![Preview do Modal](./src/assets/mobile.jpg)
 
 ![Preview do Tablet](./src/assets/modal.jpg)
 
