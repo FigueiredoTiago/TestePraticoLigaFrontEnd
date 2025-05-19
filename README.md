@@ -1,6 +1,10 @@
 # 🩺 Sistema de Agendamento Médico
 
-![Preview do Desktop](./src/assets/mac.png)
+![Preview do Desktop](./src/assets/macg.jpg)
+
+![Preview do Tablet](./src/assets/iPad-PRO-11-localhost.png)
+
+![Preview do Modal](./src/assets/modal.jpg)
 
 Sistema de agendamento médico desenvolvido com **React + TypeScript**, utilizando:
 
