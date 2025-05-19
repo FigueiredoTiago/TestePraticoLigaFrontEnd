@@ -92,6 +92,8 @@ A API fake expõe as seguintes rotas:
 │   └── Dashboard/               # Exibe o SideBar e os componentes de agendamento
 ```
 
+
+obs: Infelizmente devido as limitações do servidor fake criado com json server, a filtragem dos dados não pode ficar perfeita como deve ser, porém da pra se notar a funcionalidade em questão, agradeço a compreensão, qualquer dúvida estou a disposição.
 ---
 
 ## 👨‍💻 Desenvolvedor
