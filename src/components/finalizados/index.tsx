@@ -17,7 +17,7 @@ const index = () => {
       <h2>Ultimos Atendimentos Finalizados <Filtrar/> </h2>
 
       {data?.length === 0 ? (
-        <p>Nenhum atendimento encontrado.</p>
+        <p className={styles.alert}>Nenhum atendimento Foi Finalizado ainda.</p>
       ) : (
         <ul>
           {data?.map((atendimento) => (
